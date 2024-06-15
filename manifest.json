@@ -1,19 +1,19 @@
 {
   "manifest_version": 3,
-  "name": "Chess.com WNM Title Adder",
+  "name": "Chess.com GM Title Adder",
   "version": "1.0",
-  "description": "Adds the WNM title next to your name on Chess.com.",
+  "description": "Adds the GM title next to the username on chess.com.",
   "permissions": [
     "activeTab"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
-      "matches": ["*://*.chess.com/*"],
+      "matches": ["*://www.chess.com/*"],
       "js": ["contentScript.js"],
       "run_at": "document_idle"
     }
-  ],
-  "icons": {
-    "48": "icon.png"
-  }
+  ]
 }
