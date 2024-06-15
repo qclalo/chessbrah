@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Replace cbrahFor with chessbrah",
+  "version": "1.0",
+  "description": "This extension replaces all instances of 'cbrahFor' with 'chessbrah' in the HTML code of webpages.",
+  "permissions": [
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "48": "icon.png"
+  }
+}
