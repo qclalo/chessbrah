@@ -1,19 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "Replace cbrahFor with chessbrah",
+  "name": "Chess.com WNM Title Adder",
   "version": "1.0",
-  "description": "This extension replaces all instances of 'cbrahFor' with 'chessbrah' in the HTML code of webpages.",
+  "description": "Adds the WNM title next to your name on Chess.com.",
   "permissions": [
     "activeTab"
   ],
-  "background": {
-    "service_worker": "background.js"
-  },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["*://*.chess.com/*"],
       "js": ["contentScript.js"],
-      "run_at": "document_end"
+      "run_at": "document_idle"
     }
   ],
   "icons": {

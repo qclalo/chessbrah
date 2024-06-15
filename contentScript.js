@@ -1,21 +1,17 @@
-// Get all div elements with the class 'user-tagline-component'
-let divElements = document.querySelectorAll('div.user-tagline-component');
+// Wait for the DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", function() {
+    // Find the element containing the username
+    let usernameElements = document.querySelectorAll('a.user-username-component, span.user-username-component');
 
-// Iterate through each div element
-divElements.forEach(div => {
-    // Iterate through each child node of the div element
-    for (let i = 0; i < div.childNodes.length; i++) {
-        let node = div.childNodes[i];
-        // Check if the node is a comment node (nodeType === 8) and if its value is empty (<!---->)
-        if (node.nodeType === 8 && node.nodeValue.trim() === '') {
-            // Create a new span element with the replacement content
-            let newContent = document.createElement('span');
-            newContent.innerHTML = '<a class="user-chess-title-component" href="/members/titled-players" target="_blank" data-tooltip-target="709">WNM</a> <span class="user-tagline-rating user-tagline-white">';
+    usernameElements.forEach(element => {
+        // Check if the username matches your username
+        if (element.textContent.trim() === 'YourUsername') {
+            // Create a new span element for the WNM title
+            let wnmTitle = document.createElement('span');
+            wnmTitle.innerHTML = ' <a class="user-chess-title-component" href="/members/titled-players" target="_blank" data-tooltip-target="709">WNM</a>';
 
-            // Replace the comment node with the new content
-            div.replaceChild(newContent, node);
-            // Stop after the first replacement
-            return;
+            // Insert the WNM title after the username
+            element.parentNode.insertBefore(wnmTitle, element.nextSibling);
         }
-    }
+    });
 });
